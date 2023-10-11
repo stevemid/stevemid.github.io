@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Show/Hide Fields Example</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/themes/prism.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs-tomorrow-theme@0.0.1/prism-tomorrow.min.css">
+      <!-- Include the Prism.js theme CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.1.1/themes/prism-okaidia.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.0/prism.min.js"></script>
 <style>
     /* Add custom styles for tables */
     table {
@@ -17,175 +19,211 @@
     .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
         padding: 20px;
     }
-    :not(pre)>code[class*=language-], pre[class*=language-] {
-    background: #f9f8db;
+
+    #footballclub_dropdown {
+        max-width: 280px;
+    }
+    #OtherClub {
+        max-width: 360px;
+    }
+    #OtherColour {
+        max-width: 360px;
+    }
+    .custom-tab-content-border {
+    border: 1px solid #ddd; /* Adjust the color and border width as needed */
+    padding: 15px;
+}
+.tab-pane {
+    max-width: 100%;  
 }
 </style>
 </head>
 <body>
     <div class="container">
         <h1>Show/Hide Fields Function (JavaScript)</h1>
+
         <p>
             The <code>showHideField</code> function allows you to show or hide an optional field based on the value of another field. This is useful for creating dynamic forms where you want to display additional input fields based on user selections.
         </p>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab1">Code</a></li>
+            <li><a data-toggle="tab" href="#tab2">Usage</a></li>
+            <li><a data-toggle="tab" href="#tab3">Examples (2)</a></li>
+          </ul>
+          
+          <div class="tab-content custom-tab-content-border">
+            <div id="tab1" class="tab-pane fade in active">
+              <!-- Content for Tab 1 goes here -->
+              <div class="smcontainer">
+              
+                <pre>
+                    <code class="language-javascript">
+                        function showHideField(valueFieldID, optionalFieldID, fieldType, valueToShow) {
+                            var $valueField = $('#' + valueFieldID);
+                            var $optionalField = $('#' + optionalFieldID);
+                            var $optionalFieldContainer = $optionalField.closest('tr');
+        
+                            function toggleFieldVisibility() {
+                                var selectedValue;
+        
+                                if (fieldType === 'dropdown') {
+                                    selectedValue = $valueField.find('option:selected').text();
+                                } else if (fieldType === 'radiobuttons') {
+                                    selectedValue = $('input[name="' + valueFieldID + '"]:checked').next('label').text();
+                                }
+        
+                                if (selectedValue === valueToShow) {
+                                    $optionalFieldContainer.show();
+                                    $optionalField.prop('disabled', false);
+                                } else {
+                                    $optionalFieldContainer.hide();
+                                    $optionalField.val('');
+                                    $optionalField.prop('disabled', true);
+                                }
+                            }
+        
+                            toggleFieldVisibility();
+        
+                            $valueField.on('change', toggleFieldVisibility);
+                        }
+                    </code>
+                </pre>
+            </div>              
+            </div>
+            <div id="tab2" class="tab-pane">
+              <!-- Content for Tab 2 goes here -->
+
+              <h3>Usage:</h3>
+              <pre>
+                  <code class="language-javascript">                    
+                      showhidefield('ID1',  'ID2', 'Type', 'Value')                           
+                  </code>
+              </pre>
+              <h4>Where</h4> 
+              <div style="padding-left:100px">
+                <p><span class="token string">ID1</span> = ID of Value Field<br />
+                <span class="token string">ID2</span> = ID of the 'optional' field that is to be shown / hidden<br />
+                <span class="token string">Type</span> = The type of selection ID1 is ('radiobuttons' or 'dropdown')<br />
+                <span class="token string">Value</span> = the value of the radio or dropdown that if selected, shows the field (all others hide)</p>
+              </div>
+              
+            </div>
+            <div id="tab3" class="tab-pane">
+              <!-- Content for Tab 3 goes here -->         
+              <div class="smcontainer">
+                <h3>Example1 (Radio Buttons)</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <td colspan="1" rowspan="1" class="clearfix cell picklist-cell" role="radiogroup">
+                            <div class="info required">
+                                <label id="favouritecolour_label" class="field-label">What is your favourite colour?</label>
+                            </div>
+                            <div class="control">
+                                <span id="favouritecolour_radios" class="picklist vertical  dirty" role="presentation">
+                                    <input id="favouritecolour_0" type="radio" name="favouritecolour_radios" value="969500000">
+                                    <label for="favouritecolour_0">Red</label>
+                                    <br>
+                                    <input id="favouritecolour_1" type="radio" name="favouritecolour_radios" value="969500001">
+                                    <label for="favouritecolour_1">Green</label>
+                                    <br>
+                                    <input id="favouritecolour_2" type="radio" name="favouritecolour_radios" value="969500002" >
+                                    <label for="favouritecolour_2">Yellow</label>
+                                    <br>
+                                    <input id="favouritecolour_3" type="radio" name="favouritecolour_radios" value="969500003">
+                                    <label for="favouritecolour_3">Black</label>
+                                    <br>
+                                    <input id="favouritecolour_4" type="radio" name="favouritecolour_radios" value="Other">
+                                    <label for="favouritecolour_4">Other</label>
+                                </span>
+                            </div>
+                        </td>
+        
+                    </tr>
+                    <tr id="otherRadioField" style="display: none">
+                        <td colspan="1" rowspan="1" class="clearfix cell text form-control-cell">
+                            <div class="info">
+                                <label for="pleasespecify_radios" id="pleasespecify_radios_label" class="field-label">My favourite colour is...</label>
+                            </div>
+                            <div class="control">
+                                <input name="pleasespecify_radios" type="text" id="OtherColour" class="form-control">
+                            </div>
+                        </td>
+                    </tr>
+        
+                    <tr>
+                        <td>
+                            <pre>
+                                <code class="language-javascript">
+                                    showHideField('favouritecolour_radios', 'OtherColour', 'radiobuttons', 'Other');
+                                </code>
+                            </pre>
+        
+        
+                        </td>
+                    </tr>
+        
+                </table>
+            </div>
+            <hr />
+            <div class="smcontainer">
+                <h3>Example2 (Dropdown)</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <td colspan="1" rowspan="1" class="clearfix cell picklist-cell">
+                            <div class="control">
+                            <select name="stype" id="footballclub_dropdown" class="form-control picklist  dirty" aria-invalid="false" title="Which football team do you support?">
+                                <option selected="selected" value="" label=" " aria-label="Blank"> </option>
+                                <option value="969500000">Newcastle United</option>
+                                <option value="969500001">Manchester City</option>
+                                <option value="969500002">Manchester United</option>
+                                <option value="969500003">Chelsea</option>
+                                <option value="969500006">Arsenal</option>
+                                <option value="969500004">Accrington Stanley F.C.</option>
+                                <option value="969500005">Other</option>
+        
+                            </select>
+                    </div></td>
+                        
+                    </tr>
+                    <tr id="otherDropdownField" >
+                        <td colspan="1" rowspan="1" class="clearfix cell text form-control-cell">
+                            <div class="info">
+                                <label for="OtherClub" id="OtherClub_label" class="field-label">Please specify your favourite team:</label>
+                            </div>
+                            <div class="control">
+                                <input name="OtherClub" type="text" id="OtherClub" class="form-control">
+                            </div>
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre>
+                                <code class="language-javascript">
+                                    showHideField('footballclub_dropdown', 'OtherClub', 'dropdown', 'Other');
+                                </code>
+                            </pre>
+        
+        
+                        </td>
+                    </tr>
+                </table>
+            </div>              
+        
+            </div>
+          </div>
+
+<hr>
   
 
-        <h3>Usage:</h3>
-        <pre>
-            <code class="language-javascript">
-                // Syntax
-                showhidefield('ID1',  'ID2', 'Type', 'Value')
 
-                /* Where 
-                    ID1 = ID of Value Field
-                    ID2 = ID of the 'optional' field that is to be shown / hidden
-                    Type = The type of selection ID1 is ('radiobuttons' or 'dropdown')
-                    Value = the value of the radio or dropdown that if selected, shows the field (all others hide)
-                */            
-            </code>
-        </pre>
-    </div>
+</div>
 
 
-    <div class="container">
-        <h1>Show/Hide Fields Example (Radio Buttons)</h1>
-        <table class="table table-bordered">
-            <tr>
-                <td colspan="1" rowspan="1" class="clearfix cell picklist-cell" role="radiogroup">
-                    <div class="info required">
-                        <label id="favouritecolour_label" class="field-label">What is your favourite colour?</label>
-                    </div>
-                    <div class="control">
-                        <span id="favouritecolour_radios" class="picklist vertical  dirty" role="presentation">
-                            <input id="favouritecolour_0" type="radio" name="favouritecolour_radios" value="969500000">
-                            <label for="favouritecolour_0">Red</label>
-                            <br>
-                            <input id="favouritecolour_1" type="radio" name="favouritecolour_radios" value="969500001">
-                            <label for="favouritecolour_1">Green</label>
-                            <br>
-                            <input id="favouritecolour_2" type="radio" name="favouritecolour_radios" value="969500002" >
-                            <label for="favouritecolour_2">Yellow</label>
-                            <br>
-                            <input id="favouritecolour_3" type="radio" name="favouritecolour_radios" value="969500003">
-                            <label for="favouritecolour_3">Black</label>
-                            <br>
-                            <input id="favouritecolour_4" type="radio" name="favouritecolour_radios" value="Other">
-                            <label for="favouritecolour_4">Other</label>
-                        </span>
-                    </div>
-                </td>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-            </tr>
-            <tr id="otherRadioField" style="display: none">
-                <td colspan="1" rowspan="1" class="clearfix cell text form-control-cell">
-                    <div class="info">
-                        <label for="pleasespecify_radios" id="pleasespecify_radios_label" class="field-label">My favourite colour is...</label>
-                    </div>
-                    <div class="control">
-                        <input name="pleasespecify_radios" type="text" id="OtherColour" class="form-control">
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <pre>
-                        <code class="language-javascript">
-                            showHideField('favouritecolour_radios', 'OtherColour', 'radiobuttons', 'Other');
-                        </code>
-                    </pre>
-
-
-                </td>
-            </tr>
-
-        </table>
-    </div>
-    <div class="container">
-        <h1>Show/Hide Fields Example (Dropdown)</h1>
-        <table class="table table-bordered">
-            <tr>
-				<td colspan="1" rowspan="1" class="clearfix cell picklist-cell">
-                    <div class="control">
-                    <select name="stype" id="footballclub_dropdown" class="form-control picklist  dirty" aria-invalid="false" title="Which football team do you support?">
-                        <option selected="selected" value="" label=" " aria-label="Blank"> </option>
-                        <option value="969500000">Newcastle United</option>
-                        <option value="969500001">Manchester City</option>
-                        <option value="969500002">Manchester United</option>
-                        <option value="969500003">Chelsea</option>
-                        <option value="969500006">Arsenal</option>
-                        <option value="969500004">Accrington Stanley F.C.</option>
-                        <option value="969500005">Other</option>
-
-			    	</select>
-            </div></td>
-				
-			</tr>
-            <tr id="otherDropdownField" >
-                <td colspan="1" rowspan="1" class="clearfix cell text form-control-cell">
-                    <div class="info">
-                        <label for="OtherClub" id="OtherClub_label" class="field-label">Please specify your favourite team:</label>
-                    </div>
-                    <div class="control">
-                        <input name="OtherClub" type="text" id="OtherClub" class="form-control">
-                    </div>
-                </td>
-               
-            </tr>
-            <tr>
-                <td>
-                    <pre>
-                        <code class="language-javascript">
-                            showHideField('footballclub_dropdown', 'OtherClub', 'dropdown', 'Other');
-                        </code>
-                    </pre>
-
-
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="container">
-        <h1>Show/Hide Fields Function (JavaScript)</h1>
-        <pre>
-            <code class="language-javascript">
-                function showHideField(valueFieldID, optionalFieldID, fieldType, valueToShow) {
-                    var $valueField = $('#' + valueFieldID);
-                    var $optionalField = $('#' + optionalFieldID);
-                    var $optionalFieldContainer = $optionalField.closest('tr');
-
-                    function toggleFieldVisibility() {
-                        var selectedValue;
-
-                        if (fieldType === 'dropdown') {
-                            selectedValue = $valueField.find('option:selected').text();
-                        } else if (fieldType === 'radiobuttons') {
-                            selectedValue = $('input[name="' + valueFieldID + '"]:checked').next('label').text();
-                        }
-
-                        if (selectedValue === valueToShow) {
-                            $optionalFieldContainer.show();
-                            $optionalField.prop('disabled', false);
-                        } else {
-                            $optionalFieldContainer.hide();
-                            $optionalField.val('');
-                            $optionalField.prop('disabled', true);
-                        }
-                    }
-
-                    toggleFieldVisibility();
-
-                    $valueField.on('change', toggleFieldVisibility);
-                }
-            </code>
-        </pre>
-    </div>
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Include Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
             Prism.highlightAll();
         function showHideField(valueFieldID, optionalFieldID, fieldType, valueToShow) {
