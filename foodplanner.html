@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Week Meal Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .accordion-button {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">1-Week Meal Planner</h1>
+        <div class="accordion" id="mealPlanAccordion">
+            <!-- Shopping List -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingShoppingList">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShoppingList" aria-expanded="true" aria-controls="collapseShoppingList">
+                        Shopping List
+                    </button>
+                </h2>
+                <div id="collapseShoppingList" class="accordion-collapse collapse show" aria-labelledby="headingShoppingList" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Chia seeds</li>
+                            <li>Almond milk</li>
+                            <li>Berries</li>
+                            <li>Vegetables: broccoli, cauliflower, zucchini, carrots, asparagus</li>
+                            <li>Lean proteins: chicken breast, turkey mince, tofu</li>
+                            <li>Spices: cinnamon, chili flakes, soy sauce</li>
+                            <li>Shirataki noodles</li>
+                            <li>Eggs</li>
+                            <li>Sweet potato</li>
+                            <li>Spaghetti squash</li>
+                            <li>Greek yogurt</li>
+                            <li>Tomato sauce</li>
+                            <li>Seaweed snacks</li>
+                            <li>Whole-grain bread</li>
+                            <li>Beans and lentils</li>
+                            <li>Olive oil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monday -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingMonday">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMonday" aria-expanded="false" aria-controls="collapseMonday">
+                        Monday
+                    </button>
+                </h2>
+                <div id="collapseMonday" class="accordion-collapse collapse" aria-labelledby="headingMonday" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Breakfast:</strong> Chia Seed Pudding with Berries</li>
+                            <li><strong>Lunch:</strong> Vegetable Soup with Shirataki Noodles</li>
+                            <li><strong>Dinner:</strong> Grilled Chicken with Steamed Broccoli and Cauliflower
+                                <div><small>Family Additions: Add mashed potatoes and a creamy mushroom sauce.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tuesday -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTuesday">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTuesday" aria-expanded="false" aria-controls="collapseTuesday">
+                        Tuesday
+                    </button>
+                </h2>
+                <div id="collapseTuesday" class="accordion-collapse collapse" aria-labelledby="headingTuesday" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Breakfast:</strong> Greek Yogurt with Fresh Berries</li>
+                            <li><strong>Lunch:</strong> Stuffed Bell Peppers with Lean Turkey</li>
+                            <li><strong>Dinner:</strong> Zoodles with Tomato Sauce and Lean Turkey
+                                <div><small>Family Additions: Serve with garlic bread and grated cheese.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wednesday -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingWednesday">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWednesday" aria-expanded="false" aria-controls="collapseWednesday">
+                        Wednesday
+                    </button>
+                </h2>
+                <div id="collapseWednesday" class="accordion-collapse collapse" aria-labelledby="headingWednesday" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Breakfast:</strong> Zucchini "Oats" with Cinnamon</li>
+                            <li><strong>Lunch:</strong> Asian Veggie Stir-Fry with Shirataki Noodles</li>
+                            <li><strong>Dinner:</strong> Roasted Cauliflower Steaks with Grilled Chicken
+                                <div><small>Family Additions: Add roasted potatoes and a side of garlic bread.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thursday -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThursday">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThursday" aria-expanded="false" aria-controls="collapseThursday">
+                        Thursday
+                    </button>
+                </h2>
+                <div id="collapseThursday" class="accordion-collapse collapse" aria-labelledby="headingThursday" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Breakfast:</strong> Sweet Potato and Eggs</li>
+                            <li><strong>Lunch:</strong> High-Energy Grain Bowl with Quinoa, Chicken, and Avocado</li>
+                            <li><strong>Dinner:</strong> Spaghetti Squash "Pasta" with Tomato Sauce
+                                <div><small>Family Additions: Add meatballs and Parmesan cheese for them.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Friday -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFriday">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFriday" aria-expanded="false" aria-controls="collapseFriday">
+                        Friday
+                    </button>
+                </h2>
+                <div id="collapseFriday" class="accordion-collapse collapse" aria-labelledby="headingFriday" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Breakfast:</strong> Greek Yogurt with Nuts and Seeds</li>
+                            <li><strong>Lunch:</strong> Cabbage Stir-Fry with Tofu</li>
+                            <li><strong>Dinner:</strong> Grilled Salmon with Asparagus
+                                <div><small>Family Additions: Add a creamy dill sauce and buttered new potatoes.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saturday -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSaturday">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSaturday" aria-expanded="false" aria-controls="collapseSaturday">
+                        Saturday
+                    </button>
+                </h2>
+                <div id="collapseSaturday" class="accordion-collapse collapse" aria-labelledby="headingSaturday" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Breakfast:</strong> Mashed Avocado on Whole-Grain Toast</li>
+                            <li><strong>Lunch:</strong> Vegetable Chili</li>
+                            <li><strong>Dinner:</strong> Baked Cod with Steamed Veggies
+                                <div><small>Family Additions: Serve with a side of rice and garlic butter sauce.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sunday -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSunday">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSunday" aria-expanded="false" aria-controls="collapseSunday">
+                        Sunday
+                    </button>
+                </h2>
+                <div id="collapseSunday" class="accordion-collapse collapse" aria-labelledby="headingSunday" data-bs-parent="#mealPlanAccordion">
+                    <div class="accordion-body">
+                        <ul>
+                            <li><strong>Breakfast:</strong> Oats with Peanut Butter and Banana</li>
+                            <li><strong>Lunch:</strong> Tomato and Lentil Soup</li>
+                            <li><strong>Dinner:</strong> Baked Chicken with Brussels Sprouts
+                                <div><small>Family Additions: Add roasted sweet potatoes and a honey glaze for the chicken.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
